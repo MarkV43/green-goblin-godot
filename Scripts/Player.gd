@@ -1,18 +1,13 @@
-extends CharacterBody2D
+extends Movable
 
-var ray
-var grid_size = 32
-var inputs = {
-	'ui_up': Vector2.UP,
-	'ui_down': Vector2.DOWN,
-	'ui_left': Vector2.LEFT,
-	'ui_right': Vector2.RIGHT,
-}
+class_name Player
+
 var moves = 0
 var history = []
+@onready var weight = get_tree().get_nodes_in_group('weight')[0]
+var move_weight
 
 func _ready():
-	ray = $RayCast2D
 	save_hist()
 
 func _unhandled_input(event):
@@ -22,23 +17,38 @@ func _unhandled_input(event):
 			return
 	if event.is_action_pressed('undo'):
 		undo()
+		
+func can_move(dir):
+	if !super.can_move(dir):
+		return false
+		
+	var vector = inputs[dir] * grid_size
+	var new_position = position + vector
+	var diff = (new_position - weight.position).abs()
+	var distance = (diff.x + diff.y) / grid_size
+	
+	print('trying to move')
+	
+	if distance >= 4:
+		if diff.x == 0 || diff.y == 0:
+			if !move_weight:
+				move_weight = true
+				move_weight = weight.can_move(dir)
+			return move_weight
+		else:
+			return false
+	return true
 
 func move(dir):
-	var vector = inputs[dir] * grid_size
-	ray.target_position = vector
-	ray.force_raycast_update()
-	if !ray.is_colliding():
-		move_unchecked(vector)
-	else:
-		var collider = ray.get_collider()
-		if collider.is_in_group('movable'):
-			if collider.move(dir):
-				move_unchecked(vector)
+	move_weight = false
+	if can_move(dir):
+		if move_weight:
+			weight.move_unchecked(dir)
+		move_unchecked(dir)
 
-func move_unchecked(vec):
-	position += vec
+func move_unchecked(dir):
+	super.move_unchecked(dir)
 	moves += 1
-	print(moves)
 	save_hist()
 	
 func save_hist():

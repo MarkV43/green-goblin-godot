@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://xpjha8jgn0km"]
+[gd_scene load_steps=7 format=3 uid="uid://bvsldxnikr54o"]
 
 [ext_resource type="PackedScene" uid="uid://bofmccid67hji" path="res://Scenes/Player.tscn" id="1_b75aq"]
 [ext_resource type="PackedScene" uid="uid://r7f1towhary6" path="res://Scenes/Wall.tscn" id="3_2yjtg"]
 [ext_resource type="PackedScene" uid="uid://bm3atr50qdx1g" path="res://Scenes/Box.tscn" id="3_v3gdx"]
 [ext_resource type="PackedScene" uid="uid://dtavuabfs0q0p" path="res://Scenes/BoxEnd.tscn" id="4_2mvoi"]
+[ext_resource type="PackedScene" uid="uid://mpdtnghgqxir" path="res://Scenes/Weight.tscn" id="5_vmsgc"]
+[ext_resource type="Script" path="res://Scripts/Weight.gd" id="6_5s81r"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -11,14 +13,14 @@
 anchor_mode = 0
 zoom = Vector2(3, 3)
 
-[node name="Player" parent="." instance=ExtResource("1_b75aq")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_b75aq")]
 z_index = 10
 position = Vector2(224, 64)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_v3gdx")]
-position = Vector2(96, 64)
+[node name="Box" parent="." instance=ExtResource("3_v3gdx")]
+position = Vector2(160, 64)
 
-[node name="Area2D" parent="." instance=ExtResource("4_2mvoi")]
+[node name="Box_Final" parent="." instance=ExtResource("4_2mvoi")]
 z_index = -10
 position = Vector2(64, 160)
 
@@ -130,3 +132,10 @@ position = Vector2(0, 64)
 
 [node name="Wall36" parent="Walls" instance=ExtResource("3_2yjtg")]
 position = Vector2(0, 32)
+
+[node name="Weight" parent="." groups=["movable", "weight"] instance=ExtResource("5_vmsgc")]
+position = Vector2(128, 64)
+script = ExtResource("6_5s81r")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_v3gdx")]
+position = Vector2(192, 64)
