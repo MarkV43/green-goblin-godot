@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bofmccid67hji"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_fldcd"]
+[ext_resource type="Texture2D" uid="uid://byxpyq7qt1g8f" path="res://Assets/goblin.png" id="1_xhidh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sogcu"]
+size = Vector2(32, 32)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["movable"]]
+script = ExtResource("1_fldcd")
+
+[node name="Goblin" type="Sprite2D" parent="."]
+texture = ExtResource("1_xhidh")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_sogcu")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(16, 16)
+target_position = Vector2(32, 0)

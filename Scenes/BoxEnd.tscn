@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtavuabfs0q0p"]
+
+[ext_resource type="Texture2D" uid="uid://ccuyvihb7ieq4" path="res://Assets/box-end.png" id="1_qsd0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0i14"]
+size = Vector2(32, 32)
+
+[node name="BoxEnd" type="Area2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_qsd0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_j0i14")
