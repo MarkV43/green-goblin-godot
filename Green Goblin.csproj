@@ -1,0 +1,12 @@
+<Project Sdk="Godot.NET.Sdk/4.0.1">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RootNamespace>GreenGoblin</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+      <Reference Include="GodotSharp">
+        <HintPath>.mono/assemblies/Debug/GodotSharp.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+</Project>

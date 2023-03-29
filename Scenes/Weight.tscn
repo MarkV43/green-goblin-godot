@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://mpdtnghgqxir"]
+[gd_scene load_steps=4 format=3 uid="uid://mpdtnghgqxir"]
 
+[ext_resource type="Script" path="res://Scripts/Movable.cs" id="1_jy081"]
 [ext_resource type="Texture2D" uid="uid://binr2sh6jube" path="res://Assets/weight.png" id="1_u778x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6x61r"]
 size = Vector2(32, 31)
 
-[node name="Weight" type="CharacterBody2D"]
+[node name="Weight" type="CharacterBody2D" groups=["movable", "weight"]]
+script = ExtResource("1_jy081")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
