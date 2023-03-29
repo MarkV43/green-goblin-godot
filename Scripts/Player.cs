@@ -80,7 +80,7 @@ public partial class Player : Movable
 		MoveUnchecked(dir);
 		
 		// I moved the logic from MoveUnchecked to here
-		_moves += 1;
+		Moves += 1;
 		SaveHist();
 	}
 
