@@ -26,7 +26,6 @@ public partial class Movable : Node2D
 	// such as the Player
 	public virtual bool CanMove(String dir)
 	{
-		GD.Print(Ray);
 		var vector = Inputs[dir] * GridSize;
 		Ray.TargetPosition = vector;
 		Ray.ForceRaycastUpdate();

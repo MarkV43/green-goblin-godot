@@ -50,9 +50,7 @@ public partial class Player : Movable
 		var newPosition = Position + vector;
 		var diff = (newPosition - _weight.Position).Abs();
 		var distance = (diff.X + diff.Y) / GridSize;
-		
-		GD.Print("Trying to move");
-		
+
 		// I refactored it a bit, but the logic is the exact same
 
 		if (distance < 4)
