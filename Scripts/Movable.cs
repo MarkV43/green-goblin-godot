@@ -4,7 +4,7 @@ using Godot.Collections;
 
 public partial class Movable : Node2D
 {
-	public static readonly int GridSize = 32;
+	public const int GridSize = 32;
 
 	public static readonly Dictionary<String, Vector2> Inputs = new()
 	{
@@ -19,6 +19,7 @@ public partial class Movable : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// goblin = GetNode<Sprite2D>("Goblin");
 		Ray = GetNode<RayCast2D>("RayCast2D");
 	}
 

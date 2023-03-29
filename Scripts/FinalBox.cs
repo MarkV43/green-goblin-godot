@@ -9,14 +9,5 @@ public partial class FinalBox : Final
 		base._Ready();
 		TargetGroup = "box";
 	}
-
-	public override void OnBodyEntered(Node2D body)
-	{
-		base.OnBodyEntered(body);
-	}
-
-	public override void OnBodyExited(Node2D body)
-	{
-		base.OnBodyExited(body);
-	}
+	
 }
