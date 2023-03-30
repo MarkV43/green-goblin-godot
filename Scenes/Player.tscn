@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bofmccid67hji"]
+[gd_scene load_steps=5 format=3 uid="uid://bofmccid67hji"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_fv8v1"]
 [ext_resource type="Texture2D" uid="uid://byxpyq7qt1g8f" path="res://Assets/goblin.png" id="1_xhidh"]
+[ext_resource type="Texture2D" uid="uid://bqhqmbsgurog1" path="res://Assets/chain.png" id="3_ql23q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sogcu"]
 size = Vector2(32, 32)
@@ -12,6 +13,18 @@ script = ExtResource("1_fv8v1")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_xhidh")
 centered = false
+
+[node name="Chain" type="Sprite2D" parent="Sprite"]
+z_index = 1
+z_as_relative = false
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(16, 16)
+texture = ExtResource("3_ql23q")
+centered = false
+offset = Vector2(0, -1.5)
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, 16)

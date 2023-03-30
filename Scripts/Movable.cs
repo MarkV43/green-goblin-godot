@@ -15,16 +15,14 @@ public partial class Movable : Node2D
 	};
 	
 	private RayCast2D Ray;
-	private Sprite2D _sprite;
-	private Tween _tween;
+	public Sprite2D Sprite;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		// goblin = GetNode<Sprite2D>("Goblin");
 		Ray = GetNode<RayCast2D>("RayCast2D");
-		_sprite = GetNode<Sprite2D>("Sprite");
-		_tween = CreateTween();
+		Sprite = GetNode<Sprite2D>("Sprite");
 	}
 
 	// Virtual means this function can be overwritten in other classes,
@@ -70,10 +68,21 @@ public partial class Movable : Node2D
 		var vector = Inputs[dir] * GridSize;
 		Position += vector;
 
-		CreateTween().TweenProperty(
-			_sprite,
-			"position",
+		Animate(vector);
+	}
+
+	private void Animate(Vector2 vector)
+	{
+		CreateTween().TweenMethod(
+			Callable.From<Vector2>(AnimationUpdate), 
+			-vector,
 			Vector2.Zero,
-			0.06).From(-vector).SetEase(Tween.EaseType.InOut);
+			0.07
+		);
+	}
+
+	public virtual void AnimationUpdate(Vector2 vec)
+	{
+		Sprite.Position = vec;
 	}
 }

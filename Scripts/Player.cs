@@ -9,17 +9,26 @@ public partial class Player : Movable
 	// We'll use a stack here for performance
 	private static readonly Stack<Array<Vector2>> History = new();
 	private Movable _weight;
+	private Sprite2D _chain;
 	private bool _moveWeight;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
-		
+
+		_chain = Sprite.GetNode<Sprite2D>("Chain");
 		_weight = GetTree().GetNodesInGroup("weight")[0] as Movable;
 		SaveHist();
 	}
-	
+
+	public override void _Draw()
+	{
+		UpdateChain();
+		
+		base._Draw();
+	}
+
 	// The @ serves the sole purpose of enabling you to use reserved keywords as a variable name.
 	// For example, you can't name a variable `int` because that's the name of a type,
 	// but you can name it @int.
@@ -76,6 +85,7 @@ public partial class Player : Movable
 			_weight.MoveUnchecked(dir);
 		
 		MoveUnchecked(dir);
+		UpdateChain();
 		
 		// I moved the logic from MoveUnchecked to here
 		Moves += 1;
@@ -107,5 +117,24 @@ public partial class Player : Movable
 		{
 			((Node2D) movs[i]).Position = state[i];
 		}
+	}
+
+	public override void AnimationUpdate(Vector2 vec)
+	{
+		base.AnimationUpdate(vec);
+		
+		UpdateChain();
+	}
+	
+	private void UpdateChain()
+	{
+		var diff = _weight.Sprite.GlobalPosition - Sprite.GlobalPosition;
+		
+		_chain.RegionRect = _chain.RegionRect with
+		{
+			Size = _chain.RegionRect.Size with { X = diff.Length() }
+		};
+
+		_chain.Rotation = diff.Angle();
 	}
 }
