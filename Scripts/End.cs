@@ -1,13 +1,13 @@
 using Godot;
 using System;
 
-public partial class Final : Area2D
+public partial class End : Area2D
 {
 	public bool Occupied = false;
 	public String TargetGroup = null;
 
 	// I don't know how to explain why the function's name has to be like this... but it has to
-	public virtual void OnBodyEntered(Node2D body)
+	public void OnBodyEntered(Node2D body)
 	{
 		if (body.IsInGroup(TargetGroup))
 		{
@@ -17,9 +17,8 @@ public partial class Final : Area2D
 		CheckWin();
 	}
 
-	public virtual void OnBodyExited(Node2D body)
+	public void OnBodyExited(Node2D body)
 	{
-		GD.Print("Exited ", body);
 		if (body.IsInGroup(TargetGroup))
 		{
 			Occupied = false;
@@ -31,7 +30,7 @@ public partial class Final : Area2D
 		var finals = GetTree().GetNodesInGroup("final");
 		foreach (var node in finals)
 		{
-			if (!((Final)node).Occupied)
+			if (!((End)node).Occupied)
 				return;
 		}
 		

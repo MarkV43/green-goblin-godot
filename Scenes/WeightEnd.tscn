@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://6bn24k32aaht"]
+
+[ext_resource type="Script" path="res://Scripts/EndWeight.cs" id="1_kio0g"]
+[ext_resource type="Texture2D" uid="uid://chm31ccfx85ot" path="res://Assets/weight-end.png" id="2_47rot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0i14"]
+size = Vector2(26, 26)
+
+[node name="Weight_End" type="Area2D" groups=["final"]]
+z_index = -10
+position = Vector2(256, 128)
+script = ExtResource("1_kio0g")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_47rot")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_j0i14")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered" flags=18]
+[connection signal="body_exited" from="." to="." method="OnBodyExited" flags=18]

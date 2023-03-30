@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtavuabfs0q0p"]
 
-[ext_resource type="Script" path="res://Scripts/FinalBox.cs" id="1_k7t2a"]
+[ext_resource type="Script" path="res://Scripts/EndBox.cs" id="1_56rad"]
 [ext_resource type="Texture2D" uid="uid://ccuyvihb7ieq4" path="res://Assets/box-end.png" id="1_qsd0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0i14"]
 size = Vector2(26, 26)
 
 [node name="BoxEnd" type="Area2D" groups=["final"]]
-script = ExtResource("1_k7t2a")
+script = ExtResource("1_56rad")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_qsd0d")

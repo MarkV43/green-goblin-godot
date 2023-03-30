@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvsldxnikr54o"]
+[gd_scene load_steps=8 format=3 uid="uid://bvsldxnikr54o"]
 
 [ext_resource type="PackedScene" uid="uid://bofmccid67hji" path="res://Scenes/Player.tscn" id="1_b75aq"]
 [ext_resource type="PackedScene" uid="uid://r7f1towhary6" path="res://Scenes/Wall.tscn" id="3_2yjtg"]
 [ext_resource type="PackedScene" uid="uid://bm3atr50qdx1g" path="res://Scenes/Box.tscn" id="3_v3gdx"]
 [ext_resource type="PackedScene" uid="uid://dtavuabfs0q0p" path="res://Scenes/BoxEnd.tscn" id="4_2mvoi"]
+[ext_resource type="PackedScene" uid="uid://0ud7ghaqg4e1" path="res://Scenes/PlayerEnd.tscn" id="4_qkgfe"]
+[ext_resource type="PackedScene" uid="uid://6bn24k32aaht" path="res://Scenes/WeightEnd.tscn" id="5_l7aal"]
 [ext_resource type="PackedScene" uid="uid://mpdtnghgqxir" path="res://Scenes/Weight.tscn" id="5_vmsgc"]
 
 [node name="Node2D" type="Node2D"]
@@ -14,14 +16,19 @@ zoom = Vector2(3, 3)
 
 [node name="Player" parent="." instance=ExtResource("1_b75aq")]
 z_index = 10
-position = Vector2(224, 64)
+position = Vector2(160, 96)
 
 [node name="Box" parent="." instance=ExtResource("3_v3gdx")]
-position = Vector2(128, 128)
+position = Vector2(288, 128)
 
-[node name="Box_Final" parent="." instance=ExtResource("4_2mvoi")]
+[node name="Box_End" parent="." instance=ExtResource("4_2mvoi")]
 z_index = -10
 position = Vector2(64, 160)
+
+[node name="Player_End" parent="." instance=ExtResource("4_qkgfe")]
+
+[node name="Weight_End" parent="." instance=ExtResource("5_l7aal")]
+position = Vector2(128, 32)
 
 [node name="Walls" type="Node" parent="."]
 
@@ -136,4 +143,4 @@ position = Vector2(0, 32)
 position = Vector2(128, 64)
 
 [node name="Box2" parent="." instance=ExtResource("3_v3gdx")]
-position = Vector2(192, 64)
+position = Vector2(128, 96)

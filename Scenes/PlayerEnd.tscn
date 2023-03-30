@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ud7ghaqg4e1"]
+
+[ext_resource type="Script" path="res://Scripts/EndPlayer.cs" id="1_o4xcl"]
+[ext_resource type="Texture2D" uid="uid://cfmqhsnb2gv0r" path="res://Assets/player-end.png" id="2_7beny"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0i14"]
+size = Vector2(26, 26)
+
+[node name="Player_End" type="Area2D" groups=["final"]]
+z_index = -10
+position = Vector2(64, 64)
+script = ExtResource("1_o4xcl")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_7beny")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_j0i14")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered" flags=18]
+[connection signal="body_exited" from="." to="." method="OnBodyExited" flags=18]
