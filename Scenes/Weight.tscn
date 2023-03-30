@@ -9,7 +9,7 @@ size = Vector2(32, 31)
 [node name="Weight" type="CharacterBody2D" groups=["movable", "weight"]]
 script = ExtResource("1_jy081")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 z_index = 5
 texture = ExtResource("1_u778x")
 centered = false
